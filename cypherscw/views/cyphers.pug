@@ -1,0 +1,41 @@
+extends layout
+
+block content
+
+	<link rel="shortcut icon" type="image/png" href="images/icon.png">
+	<h1> Web Technologies Coursework: Cyphers </h1 >
+	<h2> What is it?</h2>
+	<p> A website that enables a user to encode simple text messages using different classical cyphers/encoding schemes.  </p>
+	<p> In cryptography,<em> a cypher </em> is an algorithm for performing encryption or decryption—a series of well-defined steps that can be followed as a procedure.</p>
+
+	<h2> How a cypher works</h2>
+	<p> That are many different kinds of cyphers with many different adaptations, some originating thousands of years ago, but just know that to encrypt a message all you need is two main parts: the Cypher and the Key. The cypher is the set of rules that you're using to encode the information, for example shifting the alphabet by a certain number of letters. The key tells you how to arrange those rules, otherwise they would be the same everytime and it would be easy to decode the message. </p>
+	<p> Let's take a look at the ROT13 cypher. Like the name implies, it takes the standard alphabet and moves forward 13 characters. So in this case, the key is 13.</p>
+
+	<a href="images/ROT13.png">
+	<img alt="A screenshot showing ROT13" src="images/ROT13.png" />
+	</a>
+
+	<h2> Try it for yourself!</h2>
+	<p> Simply pick the cypher you wish to use from the dropdown list</p>
+	<ul>
+	<li><b>ROT13 ~></b> Moves a character forward 13 characters in the alphabet.</li>
+	<li><b>Transposition Cypher ~></b> Inverts the text.</li>
+	<li><b>Viginere Cypher ~></b> Uses various Caesar cyphers in sequence with different shift values.</li>
+	</ul>
+	<p>Then type the message you wish to encrypt in the text area, pick a key (if using the Viginere Cypher) and press either the encrypt or decrypt button.</p>
+
+	<select id="dd" class="dropdown" onclick="DropDown()">
+	<option class="dropdownoption" value = "1">ROT13</option>
+	<option class="dropdownoption" value = "2">Transposition Cypher</option>
+	<option class="dropdownoption" value = "3">Vigenere Cypher</option>
+	</select>
+
+	<div id="input_area">
+	<textarea rows="5" cols="60" id="message"> </textarea>
+	<p id="p1">Key: </p><textarea rows="1" cols="10" id="key"> </textarea><br/>
+	<button type="button" onclick="encrypt(false)" id="encrypt_button"> Encrypt Message </button >
+	<button type="button" onclick="decrypt(true)" id="decrypt_button"> Decrypt Message </button >
+	</div>
+
+	<script type="text/javascript" src="javascripts/main.js"></script>

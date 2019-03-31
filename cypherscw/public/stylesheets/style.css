@@ -1,8 +1,105 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html{
+    background: #e6e9e9;
+    background-image: linear-gradient(270deg, rgb(230, 233, 233) 0%, rgb(216, 221, 221) 100%);
 }
 
-a {
-  color: #00B7FF;
+body{
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    color: #545454;
+    font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 950px;
+    padding: 2em 2em 4em;
+}
+
+h1{
+    color: #222;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+textarea{
+    resize: none;
+    border-radius: 0.35rem;
+    font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+	margin-bottom: 5px;
+}
+
+button{
+    display: inline-block;
+    border: none;
+    border-radius: 0.35rem;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background:#767676;
+    color: #ffffff;
+    font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover{
+    background:#4B4B4B;
+}
+
+
+button:active{
+    transform: scale(0.97);
+}
+
+img {
+    animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
+    background: transparent;
+    border: 10px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    display: block;
+    margin: 1.5em auto;
+    max-width: 70%;
+}
+
+.dropdown {
+    position: relative;
+    border: none;
+    width: 250px;
+    margin: 0px 0px 20px 0px ;
+    padding: 12px 15px;
+    font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    background: #767676;
+    color: #ffffff;
+    border-radius: 0.35rem;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+    outline: none;
+}
+
+.dropdown:hover{
+    background: #4B4B4B;
+}
+
+.dropdown:active{
+    transform: scale(0.97);
+}
+
+#p1{
+	margin: 0px 0px 5px 0px ;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
 }
