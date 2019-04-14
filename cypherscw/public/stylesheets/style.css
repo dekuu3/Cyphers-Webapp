@@ -103,3 +103,26 @@ a.button {
     text-decoration: none;
     color: initial;
 }
+
+.nav_bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 950px;
+  background-color: #f1f1f1;
+}
+
+.nav_bar li a {
+	text-decoration: none;
+	color: #000;
+	float:left;
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+
+.nav_bar.active {
+  background-color: #4CAF50;
+  color: white;
+}

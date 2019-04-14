@@ -1,9 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
-  <a href="localhost:5000/cyphers">Cyphers website</a>
-
-  <a href="localhost:5000/cyphers"><input type="button" name="button" value="click"></a>
+  <div class="nav_bar">
+  <ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/cyphers">Cyphers</a></li>
+  <li><a href="/contact">Contact</a></li>
+  <li><a href="/about">About</a></li>
+  </ul>
+  </div>
