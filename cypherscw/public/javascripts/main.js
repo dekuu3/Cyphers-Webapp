@@ -5,7 +5,7 @@ function encrypt()
     var dropdownoption = e.options[e.selectedIndex].value;
     if(dropdownoption == 1)
         {
-            rot13();           
+            rot13();
         }
     if(dropdownoption == 2)
         {
@@ -24,7 +24,7 @@ function decrypt()
     var dropdownoption = e.options[e.selectedIndex].value;
     if(dropdownoption == 1)
         {
-            rot13();           
+            rot13();
         }
     if(dropdownoption == 2)
         {
@@ -62,7 +62,7 @@ document.getElementById("message").value = cypher_text.join("");
 }
 
 //Transposition cypher - reverses the input string
-function transposition() 
+function transposition()
 {
     //gets the user input onto a variable
 	var plain_text = document.getElementById("message").value;
@@ -76,58 +76,63 @@ document.getElementById("message").value = reverseArray.join("");
 }
 
 //Vigenère cipher encryption/decription.
-function vigenere(isDecrypt) 
+function vigenere(isDecrypt)
 {
-	if (document.getElementById("key").value.length == 0) 
+	if (document.getElementById("key").value.length == 0)
      {
-		alert("Key is empty");
+		var errormsg1 = "Key is empty!";
+  		var splitString = errormsg1.split("");
+		document.getElementById("error_text").value = splitString.join("");
 		return;
 	}
 	var key = filterKey(document.getElementById("key").value);
-	if(key.length == 0) 
+	if(key.length == 0)
      {
-		alert("Key has no letters");
+		var errormsg2 = "Key has no letters!";
+		var splitString = errormsg2.split("");
+  		document.getElementById("error_text").value = splitString.join("");
 		return;
 	}
-	if(isDecrypt) 
+	if(isDecrypt)
      {
 		for (var i = 0; i < key.length; i++)
 			key[i] = (26 - key[i]) % 26;
 	}
 	var textElem = document.getElementById("message");
 	textElem.value = crypt(textElem.value, key);
+	document.getElementById("error_text").value = null;
 }
 
 //Returns the result the Vigenère encryption on the given text with the given key
-function crypt(input, key) 
+function crypt(input, key)
 {
 	var output = "";
-	for (var i = 0, j = 0; i < input.length; i++) 
+	for (var i = 0, j = 0; i < input.length; i++)
      {
 		var c = input.charCodeAt(i);
-		if (isUppercase(c)) 
+		if (isUppercase(c))
           {
 			output += String.fromCharCode((c - 65 + key[j % key.length]) % 26 + 65);
 			j++;
-		} 
-          else if (isLowercase(c)) 
+		}
+          else if (isLowercase(c))
           {
 			output += String.fromCharCode((c - 97 + key[j % key.length]) % 26 + 97);
 			j++;
-		} 
-          else 
+		}
+          else
           {
 			output += input.charAt(i);
 		}
 	}
      return output;
 }
- 
+
 //Returns an array of numbers, each in the range [0, 26), representing the given key
 //The key is case-insensitive, and non-letters are ignored.
 function filterKey(key) {
 	var result = [];
-	for (var i = 0; i < key.length; i++) 
+	for (var i = 0; i < key.length; i++)
      {
 		var c = key.charCodeAt(i);
 		if (isLetter(c))
@@ -137,19 +142,19 @@ function filterKey(key) {
 }
 
 // Tests whether the specified character code is a letter
-function isLetter(c) 
+function isLetter(c)
 {
 	return isUppercase(c) || isLowercase(c);
 }
 
 // Tests whether the specified character code is an uppercase letter - 65 is character code for 'A'. 90 is 'Z'.
-function isUppercase(c) 
+function isUppercase(c)
 {
-	return 65 <= c && c <= 90;  
+	return 65 <= c && c <= 90;
 }
 
 // Tests whether the specified character code is a lowercase letter - 97 is character code for 'a'. 122 is 'z'.
-function isLowercase(c) 
+function isLowercase(c)
 {
-	return 97 <= c && c <= 122; 
+	return 97 <= c && c <= 122;
 }

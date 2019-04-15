@@ -26,7 +26,15 @@ textarea{
     border-radius: 0.35rem;
     font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
-	margin-bottom: 5px;
+    margin-bottom: 5px;
+	 outline: none;
+}
+
+#error_text {
+	border: 0;
+	cursor: default;
+	color: red;
+	font-weight: bold;
 }
 
 button{
@@ -36,20 +44,23 @@ button{
     padding: 1rem 2rem;
     margin: 0;
     text-decoration: none;
-    background:#767676;
-    color: #ffffff;
+    background: #c6c6c6;
+    color: #000;
     font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
+	 font-weight: bold;
     line-height: 1;
     cursor: pointer;
     text-align: center;
+	 outline: none;
     transition: background 250ms ease-in-out, transform 150ms ease;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
 
 button:hover{
-    background:#4B4B4B;
+	background-color: #555;
+	color: white;
 }
 
 
@@ -72,11 +83,12 @@ img {
     border: none;
     width: 250px;
     margin: 0px 0px 20px 0px ;
-    padding: 12px 15px;
+    padding: 10px 15px;
     font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    background: #767676;
-    color: #ffffff;
+    font-size: 18px;
+    background: #c6c6c6;
+    color: #000;
+	 font-weight: bold;
     border-radius: 0.35rem;
     box-shadow: 0 1px 0 rgba(0,0,0,0.2);
     cursor: pointer;
@@ -84,7 +96,8 @@ img {
 }
 
 .dropdown:hover{
-    background: #4B4B4B;
+     background-color: #555;
+	  color: white;
 }
 
 .dropdown:active{
@@ -118,10 +131,11 @@ a.button {
 .nav_bar li a {
   display: block;
   color: #000;
-  padding: 8px 16px;
+  padding: 10px 16px;
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
+  transition: background 250ms ease-in-out, transform 150ms ease;
 }
 
 li a:hover {
