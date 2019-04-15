@@ -33,6 +33,7 @@ textarea{
 #error_text {
 	border: 0;
 	cursor: default;
+	font-size: 15px;
 	color: red;
 	font-weight: bold;
 }

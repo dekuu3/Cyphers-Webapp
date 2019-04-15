@@ -40,6 +40,7 @@ function decrypt()
 //ROT13 cypher - Rotates input message by 13 chars in the alphabet
 function rot13()
 {
+	document.getElementById("error_text").value = null;
 	var plain_text = document.getElementById("message").value;
 	var cypher_text = [];
 	var alphabet =['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
@@ -64,6 +65,7 @@ document.getElementById("message").value = cypher_text.join("");
 //Transposition cypher - reverses the input string
 function transposition()
 {
+	document.getElementById("error_text").value = null;
     //gets the user input onto a variable
 	var plain_text = document.getElementById("message").value;
     //converts it into an array
@@ -78,6 +80,7 @@ document.getElementById("message").value = reverseArray.join("");
 //Vigenère cipher encryption/decription.
 function vigenere(isDecrypt)
 {
+	document.getElementById("error_text").value = null;
 	if (document.getElementById("key").value.length == 0)
      {
 		var errormsg1 = "Key is empty!";
