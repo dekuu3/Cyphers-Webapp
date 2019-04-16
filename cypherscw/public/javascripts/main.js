@@ -161,3 +161,41 @@ function isLowercase(c)
 {
 	return 97 <= c && c <= 122;
 }
+
+//checks if theres any webstorage available in the broswer
+function storageAvailable(type)
+{
+	try
+	{
+		var storage = window[type], x = '__storage_test__';
+		storage.setItem(x, x);
+		storage.removeItem(x);
+		return true;
+	}
+	catch(e)
+	{
+		return e instanceof DOMException && (
+			e.code === 22 ||
+			e.code === 1014 ||
+			e.name === 'QuotaExceededError' ||
+			e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+			storage.length !== 0;
+	}
+}
+
+//Calls storageAvailable function with the value localStorage or sessionstorage to see which is available to use.
+function signupuser()
+{
+	var usernamerequested = document.getElementById("login_ta").value;
+	if(storageAvailable('localStorage'))
+	{
+		localStorage.setItem('username', usernamerequested);
+	}
+	else
+	{
+		console.log("oh noes");
+	}
+
+	var myname = localStorage.getItem('username');
+	console.log(myname);
+}
