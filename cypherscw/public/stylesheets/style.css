@@ -48,7 +48,7 @@ button{
     background: #c6c6c6;
     color: #000;
     font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 18px;
+    font-size: 14px;
 	 font-weight: bold;
     line-height: 1;
     cursor: pointer;
@@ -86,7 +86,7 @@ img {
     margin: 0px 0px 20px 0px ;
     padding: 10px 15px;
     font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     background: #c6c6c6;
     color: #000;
 	 font-weight: bold;
@@ -149,9 +149,17 @@ li a:hover {
 	margin-left: auto;
 	margin-right: auto;
 	resize: none;
+	color: black;
 	border-radius: 0.35rem;
 	font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	margin-bottom: 5px;
 	outline: none;
+}
+
+.login_area button {
+	display: inline-block;
+	font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	margin-bottom: 5px;
 }
