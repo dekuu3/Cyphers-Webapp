@@ -1,3 +1,4 @@
+
 //Encrypt message button - Checks dropdown and picks the correct cypher
 function encrypt()
 {
@@ -186,16 +187,94 @@ function storageAvailable(type)
 //Calls storageAvailable function with the value localStorage or sessionstorage to see which is available to use.
 function signupuser()
 {
-	var usernamerequested = document.getElementById("login_ta").value;
-	if(storageAvailable('localStorage'))
+	uservalidation();
+
+	//var myname = localStorage.getItem('username');
+	//console.log(myname);
+}
+
+//checks if user exists before adding to webstorage
+function uservalidation()
+{
+	var i;
+	var usernamerequested = document.getElementById("username_ta").value;
+	var passwordrequested = document.getElementById("password_ta").value;
+	postData('/test', {username: usernamerequested, password: passwordrequested})
+	  .then(data => {
+		  if(data.ok === true){
+			  window.location.href = "/cyphers";
+		  }
+			else {
+			alert("Username already exists.")		
+			}
+	  }
+	  ) // JSON-string from `response.json()` call
+	  .catch(error => console.error(error));
+
+
+
+//se as 2 textareas tiverem cheias do this
+	if(localStorage.getItem(usernamerequested) !== null)
 	{
-		localStorage.setItem('username', usernamerequested);
+		console.log(usernamerequested + " -  username already exists, choose another one");
 	}
 	else
 	{
-		console.log("oh noes");
+		if(storageAvailable('localStorage'))
+		{
+			// //localStorage.setItem('username', usernamerequested);
+			// var tempusername = JSON.parse(localStorage.getItem(usernamerequested)) || [];
+			// var temppassword = JSON.parse(localStorage.getItem(passwordrequested)) || [];
+	      // tempusername.push(usernamerequested);
+			// temppassword.push(passwordrequested);
+			localStorage.setItem(usernamerequested, passwordrequested);
+	      console.log(localStorage.getItem('username'));
+		}
+		else
+		{
+			console.log("There's no storage available.");
+		}
 	}
-
-	var myname = localStorage.getItem('username');
-	console.log(myname);
 }
+
+function test12345()
+{
+
+	var dropd = document.getElementById("username_ta").value;
+    var drophistory = JSON.parse(localStorage.getItem(dropd)) || [];
+    drophistory.push(dropd);
+    localStorage.setItem("username", JSON.stringify(drophistory));
+	 console.log(drophistory);
+
+
+}
+
+function postData(url = '', data = {}) {
+  // Default options are marked with *
+    return fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json",
+            // "Content-Type": "application/x-www-form-urlencoded",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer", // no-referrer, *client
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+ }
+
+/*
+var j_str = '{" firstname ":" simon "}';
+var j_obj = JSON.parse(j_str);
+console.log(j_obj);
+console.log(j_str);
+
+
+console.log("local storage");
+for (i = 0; i < localStorage.length; i++)   {
+    console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
+}
+*/

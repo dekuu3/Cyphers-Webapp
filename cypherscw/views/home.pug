@@ -12,10 +12,16 @@ block content
 	<br>
 
 	<div class="login_area">
-	<textarea maxlength="25" rows="1" cols="23" id="login_ta" placeholder="Username"></textarea>
+	<textarea maxlength="25" rows="1" cols="23" id="username_ta" placeholder="Username"></textarea>
 	<textarea maxlength="25" rows="1" cols="23" id="password_ta" placeholder="Password"></textarea> <br/>
 	<button type="button" onclick="signupuser()" id="signup_button"> Sign up </button >
-	<button type="button" onclick="Loginuser" id="login_button"> Log in </button >
+	<button type="button" onclick="test12345()" id="login_button"> Log in </button >
 	</div>
+
+	<form action='/test' method='GET'>
+	<input type='username' name='name'/>
+	<input type='password' name='password'/>
+	<input type='submit'/>
+	</form>
 
 	<script type="text/javascript" src="javascripts/main.js"></script>
