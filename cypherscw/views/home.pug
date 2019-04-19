@@ -2,10 +2,10 @@ extends layout
 
 block content
 	<div class="login_area">
-	<input maxlength="25" rows="1" cols="23" id="username_ta" placeholder="Username"></input>
+	<input type="username" maxlength="25" rows="1" cols="23" id="username_ta" placeholder="Username"></input>
 	<input type="password" maxlength="25" rows="1" cols="23" id="password_ta" placeholder="Password"></input> <br/>
 	<button type="button" onclick="signupuser()" id="signup_button"> Sign up </button >
-	<button type="button" onclick="test12345()" id="login_button"> Log in </button >
+	<button type="button" onclick="loginuser()" id="login_button"> Log in </button >
 	</div>
 
 	<form action='/test' method='GET'>

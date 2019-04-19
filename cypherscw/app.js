@@ -12,7 +12,7 @@ var app = express();
 
 app.use(bodyParser.json());
 
-
+//http request to check if username is taken/to add user to db
 app.post('/test', (request, response)=>{
 	fs.readFile("data.JSON", 'utf8', function(err, data) {
 	 var parseddata = JSON.parse(data);
@@ -62,15 +62,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-
-function signupuser()
-{
-fs.appendFile('data.txt', 'total legit username bro.', function (err) {
-  if (err) throw err;
-  console.log('Updated!');
-});
-}
 
 module.exports = app;

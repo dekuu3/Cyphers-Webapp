@@ -65,18 +65,6 @@ function uservalidation()
 	}
 }
 
-function test12345()
-{
-
-	var dropd = document.getElementById("username_ta").value;
-    var drophistory = JSON.parse(localStorage.getItem(dropd)) || [];
-    drophistory.push(dropd);
-    localStorage.setItem("username", JSON.stringify(drophistory));
-	 console.log(drophistory);
-
-
-}
-
 function postData(url = '', data = {}) {
   // Default options are marked with *
     return fetch(url, {
