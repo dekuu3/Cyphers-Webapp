@@ -37,6 +37,7 @@ function signupuser()
 		 {
 			  if(data.ok === true){
 				  window.location.href = "/cyphers";
+				  localStorage.setItem("logged_user", usernamerequested);
 			  }
 				else {
 				alert("username already exists")
@@ -63,32 +64,3 @@ function postData(url = '', data = {}) {
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
  }
-
-//checks username and password against the fs to log in users
-function loginuser()
-{
-	var usernamerequested = document.getElementById("username_ta").value;
-	var passwordrequested = document.getElementById("password_ta").value;
-
-	if(!usernamerequested || !passwordrequested)
-	{
-		alert("Must fill in username and password!");
-	}
-	else
-	{
-		postData('/login', {username: usernamerequested, password: passwordrequested})
-		  .then(data =>
-		 {
-			  if(data.ok === true){
-				  window.location.href = "/cyphers";
-				  localStorage.setItem("logged_user", usernamerequested);
-			  }
-				else {
-				alert("wrong password/username")
-				}
-		  }
-	  ) // JSON-string from 'response.json()' call
-		  .catch(error => console.error(error));
-	}
-
-}
