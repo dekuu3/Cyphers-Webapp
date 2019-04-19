@@ -19,20 +19,20 @@ function storageAvailable(type)
 	}
 }
 
-//validates user, checks if all boxes are filled and then adds to db if successfull
+//checks if both username box and pw box are filled, then checks the fs to see if username is already in use
+//and adds users to the fs and redirects them to /cyphers
 function signupuser()
 {
-	var i;
 	var usernamerequested = document.getElementById("username_ta").value;
 	var passwordrequested = document.getElementById("password_ta").value;
 
 	if(!usernamerequested || !passwordrequested)
 	{
-		alert("Must write username and password!");
+		alert("Must fill in username and password!");
 	}
 	else
 	{
-		postData('/test', {username: usernamerequested, password: passwordrequested})
+		postData('/signup', {username: usernamerequested, password: passwordrequested})
 		  .then(data =>
 		 {
 			  if(data.ok === true){
@@ -42,7 +42,7 @@ function signupuser()
 				alert("username already exists")
 				}
 		  }
-		  ) // JSON-string from `response.json()` call
+	  ) // JSON-string from 'response.json()' call
 		  .catch(error => console.error(error));
 	}
 }
@@ -64,7 +64,31 @@ function postData(url = '', data = {}) {
     });
  }
 
+//checks username and password against the fs to log in users
 function loginuser()
 {
+	var usernamerequested = document.getElementById("username_ta").value;
+	var passwordrequested = document.getElementById("password_ta").value;
+
+	if(!usernamerequested || !passwordrequested)
+	{
+		alert("Must fill in username and password!");
+	}
+	else
+	{
+		postData('/login', {username: usernamerequested, password: passwordrequested})
+		  .then(data =>
+		 {
+			  if(data.ok === true){
+				  window.location.href = "/cyphers";
+				  localStorage.setItem("logged_user", usernamerequested);
+			  }
+				else {
+				alert("wrong password/username")
+				}
+		  }
+	  ) // JSON-string from 'response.json()' call
+		  .catch(error => console.error(error));
+	}
 
 }
