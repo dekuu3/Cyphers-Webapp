@@ -57,7 +57,11 @@ function sendmsg(){
     'Content-Type': 'application/json'
   }})
   .then(response =>{
-    console.log('Success:', JSON.stringify(response))})
+    console.log('Success:', JSON.stringify(response))
+	 document.getElementById("message").value = null;
+	 document.getElementById("key").value = null;
+	 document.getElementById("msgusername").value = null;
+ })
   .catch(error =>
     console.error('Error:', error));
 }

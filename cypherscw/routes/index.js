@@ -30,7 +30,7 @@ try{
   var usermessages = JSON.parse(localStorage.getItem(storagekey)) || [];
   usermessages.push(req.body.message);
   localStorage.setItem(storagekey, JSON.stringify(usermessages));
-  console.log("Message received. Messages" + localStorage.getItem(storagekey));
+  console.log("Message received. Message: " + localStorage.getItem(storagekey));
   res.send();
 }
 catch(error)
