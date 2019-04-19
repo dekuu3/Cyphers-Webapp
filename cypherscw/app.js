@@ -64,10 +64,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-fs.open('data.txt', 'w', function (err, file) {
-  if (err) throw err;
-  console.log('Saved!');
-});
 
 function signupuser()
 {

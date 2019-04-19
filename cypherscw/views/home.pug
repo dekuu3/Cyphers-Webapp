@@ -1,19 +1,9 @@
 extends layout
 
 block content
-	<div class="nav_bar">
-	<ul>
-	<li><a href="/">Home</a></li>
-	<li><a href="/cyphers">Cyphers</a></li>
-	<li><a href="/contact">Contact</a></li>
-	<li style="float:right"><a href="/about">About</a></li>
-	</ul>
-	</div>
-	<br>
-
 	<div class="login_area">
-	<textarea maxlength="25" rows="1" cols="23" id="username_ta" placeholder="Username"></textarea>
-	<textarea maxlength="25" rows="1" cols="23" id="password_ta" placeholder="Password"></textarea> <br/>
+	<input maxlength="25" rows="1" cols="23" id="username_ta" placeholder="Username"></input>
+	<input type="password" maxlength="25" rows="1" cols="23" id="password_ta" placeholder="Password"></input> <br/>
 	<button type="button" onclick="signupuser()" id="signup_button"> Sign up </button >
 	<button type="button" onclick="test12345()" id="login_button"> Log in </button >
 	</div>
@@ -24,4 +14,4 @@ block content
 	<input type='submit'/>
 	</form>
 
-	<script type="text/javascript" src="javascripts/main.js"></script>
+	<script type="text/javascript" src="javascripts/signup.js"></script>
