@@ -1,0 +1,148 @@
+% #######################################
+% ########### FILL THESE IN #############
+% #######################################
+\def\mytitle{Coursework Report}
+\def\mykeywords{Fill, These, In, So, google, can, find, your, report}
+\def\myauthor{David Pires Lazaro}
+\def\contact{40406091@live.napier.ac.uk}
+\def\mymodule{Web Technologies (SET08101)}
+% #######################################
+% #### YOU DON'T NEED TO TOUCH BELOW ####
+% #######################################
+\documentclass[10pt, a4paper]{article}
+\usepackage[a4paper,outer=1.5cm,inner=1.5cm,top=1.75cm,bottom=1.5cm]{geometry}
+\twocolumn
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+%colour our links, remove weird boxes
+\usepackage[colorlinks,linkcolor={black},citecolor={blue!80!black},urlcolor={blue!80!black}]{hyperref}
+%Stop indentation on new paragraphs
+\usepackage[parfill]{parskip}
+%% Arial-like font
+\IfFileExists{uarial.sty}
+{
+    \usepackage[english]{babel}
+    \usepackage[T1]{fontenc}
+    \usepackage{uarial}
+    \renewcommand{\familydefault}{\sfdefault}
+}{
+    \GenericError{}{Couldn't find Arial font}{ you may need to install 'nonfree' fonts on your system}{}
+    \usepackage{lmodern}
+    \renewcommand*\familydefault{\sfdefault}
+}
+%Napier logo top right
+\usepackage{watermark}
+%Lorem Ipusm dolor please don't leave any in you final report ;)
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{listings}
+%give us the Capital H that we all know and love
+\usepackage{float}
+%tone down the line spacing after section titles
+\usepackage{titlesec}
+%Cool maths printing
+\usepackage{amsmath}
+%PseudoCode
+\usepackage{algorithm2e}
+
+\titlespacing{\subsection}{0pt}{\parskip}{-3pt}
+\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
+\titlespacing{\paragraph}{0pt}{\parskip}{\parskip}
+\newcommand{\figuremacro}[5]{
+    \begin{figure}[#1]
+        \centering
+        \includegraphics[width=#5\columnwidth]{#2}
+        \caption[#3]{\textbf{#3}#4}
+        \label{fig:#2}
+    \end{figure}
+}
+
+\lstset{
+	escapeinside={/*@}{@*/}, language=C++,
+	basicstyle=\fontsize{8.5}{12}\selectfont,
+	numbers=left,numbersep=2pt,xleftmargin=2pt,frame=tb,
+    columns=fullflexible,showstringspaces=false,tabsize=4,
+    keepspaces=true,showtabs=false,showspaces=false,
+    backgroundcolor=\color{white}, morekeywords={inline,public,
+    class,private,protected,struct},captionpos=t,lineskip=-0.4em,
+	aboveskip=10pt, extendedchars=true, breaklines=true,
+	prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	keywordstyle=\color[rgb]{0,0,1},
+	commentstyle=\color[rgb]{0.133,0.545,0.133},
+	stringstyle=\color[rgb]{0.627,0.126,0.941}
+}
+
+\thiswatermark{\centering \put(336.5,-38.0){\includegraphics[scale=0.8]{logo}} }
+\title{\mytitle}
+\author{\myauthor\hspace{1em}\\\contact\\Edinburgh Napier University\hspace{0.5em}-\hspace{0.5em}\mymodule}
+\date{}
+\hypersetup{pdfauthor=\myauthor,pdftitle=\mytitle,pdfkeywords=\mykeywords}
+\sloppy
+% #######################################
+% ########### START FROM HERE ###########
+% #######################################
+\begin{document}
+\maketitle
+\section{Introduction}
+The aim of this assignment is to extend the cypher site from the first coursework to design and implement a coded messaging platform. The solution will include server and client elements. The client element will provide a web interface to enable your users to sign-up for an account, to write plain text messages, to encode those messages (using the cyphers previously developed, to send those messages to other users, to access messages sent to them, and to decipher any received messages.
+The server element will persist data about messages and users and will support the client-side functionality. 
+
+For this project I used both local storage and the filesystem package to act as my database, all built upon an Express HTML template to avoid having to create every file from scratch,and using HTTP requests to interact between client-side and server-side interfaces.
+
+\section { Software Design }
+I started off the project by writing down all the requirements for the assignment on a piece of paper so I could then start ticking off tasks as I would complete them. The requirements for this project are to improve on the site from the first coursework and implement:
+\\-A Sign up/Log in system
+\\-The ability to send text messages to other users
+\\-To encode those messages
+\\-And finally to have a database system set up to deal with the messaging and the login systems.
+
+Right from the start, using the filesystem node package for the sign up/log in systems seems the most straightforward as it allows us to work with the file system on our computers, and thus read, create and edit files to acts as our own database. It consisted of validating the user data, followed by sending a POST request to the server that then stores the username and password onto a JSON file.
+\\Using that same JSON file, the log in system would just need to read the database and with a simple for each loop iterate between all the array objects and pick out the matching username and password pair.
+LocalStorage will also hold the current logged in user, so the messaging system can display the correct messages.
+
+The messaging, as we'll see later, required an npm module called node-localstorage to use localStorage at the nodejs server side. Each message will be pushed onto an array that belongs to each specific username, and we've named each user's key "username + \_messages" which we can then filter to output each user's messages depending on their username.
+
+\section { Implementation }
+
+As for the Client-Side of the website, again, a simple design was the preferred approach. Right at the start, you are greeted by a sign up page, which will check against the file system if your username is unique. When you log in, you are going to be redirected to /cyphers, the main page of the website. There you will find a brief introduction as to what you can do on the website and then at the bottom you will be faced with an UI that will allow you to write messages, encode them and send them to other users.
+
+ \figuremacro{h}{UI}{UI}{ - Simple interface}{1.0}
+ 
+ At the bottom of the page you will find the Message board. There you will see all the messages that have been sent to  you in the form of an unordered list.
+ 
+\figuremacro{h}{Msg}{Messages}{ - How users see messages }{0.9}
+
+ 
+\section { Critical Evaluation }
+
+The project turned out successful and without many detours from the main path that was originally planned.
+The body-parser package was one feature I didn't plan on using but turns out it does a great job at parsing the data from an HTTP request into a format which you can easily extract relevant information.
+
+\begin{lstlisting}[caption = Body-parser]
+function postData(url = '', data = {}) {
+    return fetch(url, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {"Content-Type": "application/json",},
+        redirect: "follow",
+        referrer: "no-referrer",
+        body: JSON.stringify(data),
+    });
+ }
+ \end{lstlisting}
+ 
+ Struggled with connecting the server-side with the client-side, and then connecting them to the database but after hours of searching, I managed to find a zellwk.com\cite{zellwk} which explained the reasoning behind a CRUD application and how body-parser worked while also going through sending HTTP requests to the back-end.
+ 
+ Possible improvements would include a password encrypting function using bcrypt and a user authentication service to allow for admin privileges around the website such as maybe deleting messages.
+
+\section { Personal Evaluation }
+
+By far, the hardest part was the interaction between client-side and server-side  which had me research for hours in hopes of finding a viable solution to my problems. Read a lot on CRUD and HTTP requests and how the server deals with PUT/GET/POST/CREATE requests.
+
+
+\bibliographystyle {ieeetr}
+\bibliography {references}
+
+\end {document}
