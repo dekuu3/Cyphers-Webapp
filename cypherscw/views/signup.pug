@@ -2,12 +2,14 @@ extends layout
 
 block content
 	<h2> Where are we?</h2>
-	<p> A site that allows you to send cyphers to friends</p>
-	<p> Sign up dawg. </p>
+	<p> This site will not only encode your messages into secret codes using 3 ancient cyphers but also allow you to send it to your friends (or enemies) secretly.</p>
+	<p> Sign up and have fun! </p>
+
 	<br>
 	<div class="login_area">
 	<input type="username" maxlength="25" rows="1" cols="23" id="username_ta" placeholder="Username"></input>
-	<input type="password" maxlength="25" rows="1" cols="23" id="password_ta" placeholder="Password"></input> <br/>
+		<input rows="1" size="50" id="signuperrormsg" readonly> </input><br>
+	<input type="password" maxlength="25" rows="1" cols="23" id="password_ta" placeholder="Password"></input><br>
 	<button type="button" onclick="signupuser()" id="signup_button"> Sign up </button >
 	<button type="button" onclick="loginuser()" id="login_button"> Log in </button >
 	</div>

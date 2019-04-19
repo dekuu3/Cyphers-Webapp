@@ -1,24 +1,3 @@
-//checks if theres any webstorage available in the broswer
-function storageAvailable(type)
-{
-	try
-	{
-		var storage = window[type], x = '__storage_test__';
-		storage.setItem(x, x);
-		storage.removeItem(x);
-		return true;
-	}
-	catch(e)
-	{
-		return e instanceof DOMException && (
-			e.code === 22 ||
-			e.code === 1014 ||
-			e.name === 'QuotaExceededError' ||
-			e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-			storage.length !== 0;
-	}
-}
-
 //checks if both username box and pw box are filled, then checks the fs to see if username is already in use
 //and adds users to the fs and redirects them to /cyphers
 function signupuser()
@@ -28,7 +7,9 @@ function signupuser()
 
 	if(!usernamerequested || !passwordrequested)
 	{
-		alert("Must fill in username and password!");
+		var errorsignup1 = "No fields can be empty!";
+		var splitString = errorsignup1.split("");
+		document.getElementById("signuperrormsg").value = splitString.join("");
 	}
 	else
 	{
@@ -40,27 +21,25 @@ function signupuser()
 				  localStorage.setItem("logged_user", usernamerequested);
 			  }
 				else {
-				alert("username already exists")
+					var errorsignup1 = "Username already in use!";
+					var splitString = errorsignup1.split("");
+			  		document.getElementById("signuperrormsg").value = splitString.join("");
 				}
 		  }
-	  ) // JSON-string from 'response.json()' call
+	  )
 		  .catch(error => console.error(error));
 	}
 }
 
 function postData(url = '', data = {}) {
-  // Default options are marked with *
     return fetch(url, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json",
-            // "Content-Type": "application/x-www-form-urlencoded",
-        },
-        redirect: "follow", // manual, *follow, error
-        referrer: "no-referrer", // no-referrer, *client
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {"Content-Type": "application/json",},
+        redirect: "follow",
+        referrer: "no-referrer",
+        body: JSON.stringify(data),
     });
  }
