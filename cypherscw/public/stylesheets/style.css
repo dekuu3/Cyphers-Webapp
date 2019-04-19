@@ -40,7 +40,7 @@ h1{
 button{
     display: inline-block;
     border: none;
-    border-radius: 0.35rem;
+    border-radius: 0.15rem;
     padding: 1rem 2rem;
     margin: 0;
     text-decoration: none;
@@ -89,7 +89,7 @@ img {
     background: #c6c6c6;
     color: #000;
 	 font-weight: bold;
-    border-radius: 0.35rem;
+    border-radius: 0.15rem;
     box-shadow: 0 1px 0 rgba(0,0,0,0.2);
     cursor: pointer;
     outline: none;

@@ -12,7 +12,7 @@ var app = express();
 
 app.use(bodyParser.json());
 
-//http request to check if username is taken/to add user to db
+//http request to check if username is taken and/or to add user to db
 app.post('/test', (request, response)=>{
 	fs.readFile("data.JSON", 'utf8', function(err, data) {
 	 var parseddata = JSON.parse(data);

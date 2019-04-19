@@ -19,49 +19,31 @@ function storageAvailable(type)
 	}
 }
 
-//Calls storageAvailable function with the value localStorage or sessionstorage to see which is available to use.
+//validates user, checks if all boxes are filled and then adds to db if successfull
 function signupuser()
-{
-	uservalidation();
-
-}
-
-//checks if user exists before adding to db
-function uservalidation()
 {
 	var i;
 	var usernamerequested = document.getElementById("username_ta").value;
 	var passwordrequested = document.getElementById("password_ta").value;
-	postData('/test', {username: usernamerequested, password: passwordrequested})
-	  .then(data => {
-		  if(data.ok === true){
-			  window.location.href = "/cyphers";
-		  }
-			else {
-			alert("username already exists")
-			}
-	  }
-	  ) // JSON-string from `response.json()` call
-	  .catch(error => console.error(error));
 
-
-
-//se as 2 textareas tiverem cheias do this
-	if(localStorage.getItem(usernamerequested) !== null)
+	if(!usernamerequested || !passwordrequested)
 	{
-		console.log(usernamerequested + " -  username already exists, choose another one");
+		alert("Must write username and password!");
 	}
 	else
 	{
-		if(storageAvailable('localStorage'))
-		{
-			localStorage.setItem(usernamerequested, passwordrequested);
-	      console.log(localStorage.getItem('username'));
-		}
-		else
-		{
-			console.log("There's no storage available.");
-		}
+		postData('/test', {username: usernamerequested, password: passwordrequested})
+		  .then(data =>
+		 {
+			  if(data.ok === true){
+				  window.location.href = "/cyphers";
+			  }
+				else {
+				alert("username already exists")
+				}
+		  }
+		  ) // JSON-string from `response.json()` call
+		  .catch(error => console.error(error));
 	}
 }
 
@@ -81,3 +63,8 @@ function postData(url = '', data = {}) {
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
  }
+
+function loginuser()
+{
+
+}
