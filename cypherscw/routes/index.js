@@ -10,8 +10,8 @@ router.get('/cyphers', function(req ,res ,next) {
 	res.render('cyphers', {title:'Cyphers'});
 });
 
-router.get('/contact', function(req ,res ,next) {
-	res.render('index', {title:'Contact'});
+router.get('/messages', function(req ,res ,next) {
+	res.render('messages', {title:'Message Friends'});
 });
 
 router.get('/about', function(req ,res ,next) {

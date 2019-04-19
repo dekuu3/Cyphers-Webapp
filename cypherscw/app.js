@@ -28,7 +28,7 @@ app.post('/signup', (request, response)=>{
 		parseddata.push(request.body);
 	  	fs.writeFile('data.JSON', JSON.stringify(parseddata), function (err) {
 		   if (err) throw err;
-			response.redirect('/cyphers');
+			response.send();
 		});
   });
 });
@@ -42,7 +42,7 @@ app.post('/login', (request, response)=>{
 	 for(i = 0; i < parseddata.length; i++){
 		 if(parseddata[i].username === request.body.username &&
 			 parseddata[i].password === request.body.password){
-		 			response.redirect('/cyphers');
+		 			response.send();
 					return;
 		 	}
 	 	}
