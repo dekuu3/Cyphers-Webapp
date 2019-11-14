@@ -1,5 +1,4 @@
-# Webtech 2
-David Lazaro [40406091]
+David Lazaro
 
 ### How to launch
 
